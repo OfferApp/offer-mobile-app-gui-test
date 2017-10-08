@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "native-examples",
+    "name": "offer-mobile-app-gui-test",
     "description": "An empty new project",
-    "slug": "native-examlples",
+    "slug": "offer-mobile-app-gui-test",
     "privacy": "public",
     "sdkVersion": "21.0.0",
     "version": "1.0.0",
