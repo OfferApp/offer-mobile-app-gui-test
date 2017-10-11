@@ -1,5 +1,5 @@
 import React from 'react';
-import Expo from 'expo';
+import Expo, { AppLoading } from 'expo';
 import { View } from 'react-native';
 import Offers from './src/Offers';
 
@@ -21,10 +21,13 @@ import Offers from './src/Offers';
      this.setState({ isReady: true });
  }
    render() {
-    return (
-      <View style={{ flex: 1 }}>
-       <Offers />
-      </View>
-    );
-  }
+       if (this.state.isReady) {
+       return (
+         <View style={{ flex: 1 }}>
+          <Offers />
+         </View>
+       );
+     }
+     return <AppLoading />;
+   }
 }

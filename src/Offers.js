@@ -21,14 +21,14 @@ import { Container,
  import foods from './img/foods.jpg';
  import shoe from './img/shoe.jpg';
 
-
 class Offers extends Component {
   render() {
     const {
-      backgroundImage,
       textContainerStyle,
+      backgroundImage,
       containerStyle,
       cardItemStyle,
+      headerStyle,
       textStyle,
       viewStyle,
       cardStyle,
@@ -37,7 +37,7 @@ class Offers extends Component {
 
     return (
       <Container style={containerStyle}>
-        <Header style={{ backgroundColor: 'black' }}>
+        <Header style={headerStyle}>
           <Left>
             <Button transparent>
               <Icon name='menu' />
@@ -52,7 +52,7 @@ class Offers extends Component {
           <View style={{ flex: 1 }} >
             <View style={viewStyle} >
               <Card style={cardStyle}>
-                <CardItem style={cardItemStyle}>
+                <CardItem style={cardItemStyle} cardBody>
                   <Image
                     source={foods}
                     style={backgroundImage}
@@ -66,7 +66,7 @@ class Offers extends Component {
             </View>
             <View style={viewStyle} >
               <Card style={cardStyle}>
-              <CardItem style={cardItemStyle}>
+              <CardItem style={cardItemStyle} cardBody>
                 <Image
                   source={hotels}
                   style={backgroundImage}
@@ -80,7 +80,7 @@ class Offers extends Component {
             </View>
             <View style={viewStyle} >
               <Card style={cardStyle}>
-              <CardItem style={cardItemStyle}>
+              <CardItem style={cardItemStyle} cardBody>
                 <Image
                   source={clothes}
                   style={backgroundImage}
@@ -94,7 +94,7 @@ class Offers extends Component {
             </View>
             <View style={viewStyle} >
               <Card style={cardStyle}>
-              <CardItem style={cardItemStyle}>
+              <CardItem style={cardItemStyle} cardBody>
                 <Image
                   source={accessories}
                   style={backgroundImage}
@@ -108,7 +108,7 @@ class Offers extends Component {
             </View>
             <View style={viewStyle} >
               <Card style={cardStyle}>
-              <CardItem style={cardItemStyle}>
+              <CardItem style={cardItemStyle} cardBody>
                 <Image
                   source={shoe}
                   style={backgroundImage}
@@ -122,13 +122,13 @@ class Offers extends Component {
             </View>
             <View style={viewStyle} >
               <Card style={cardStyle}>
-              <CardItem style={cardItemStyle}>
+              <CardItem style={cardItemStyle} cardBody>
                 <Image
                   source={Electronics1}
                   style={backgroundImage}
                 >
                 <View style={textContainerStyle}>
-                  <Text style={textStyle}>Electronics1</Text>
+                  <Text style={textStyle}>Electronics</Text>
                 </View>
                 </Image>
               </CardItem>
@@ -143,47 +143,49 @@ class Offers extends Component {
 const { height, width } = Dimensions.get('window');
 const styles = {
   cardItemStyle: {
-    flex: 1,
-    flexDirection: 'column',
-    margin: -25,
-    padding: -25,
+    flex: 1
   },
   backgroundImage: {
    flex: 1,
+   height: height / 5,
    width
  },
  cardStyle: {
-   margin: -25,
-   padding: -25
+   flex: 1,
+   borderColor: 'black'
  },
  textStyle: {
    alignSelf: 'center',
-   padding: 30,
+   paddingTop: height / 15,
    fontSize: 30,
    textAlign: 'center',
    fontWeight: 'bold',
-   color: 'white',
-   height: height / 5,
+   color: 'white'
+ },
+ headerStyle: {
+   backgroundColor: 'black',
+   borderBottomColor: 'black'
  },
  titleStyle: {
    fontWeight: 'bold',
    backgroundColor: 'black',
    color: 'white',
-   alignSelf: 'center',
+   textAlign: 'center',
    fontSize: 18,
  },
  containerStyle: {
+   backgroundColor: 'black',
    marginTop: 20
  },
  viewStyle: {
-   flex: 1,
-   height: height / 5,
-   width
+   marginTop: -4,
+   marginBottom: -4,
+   flex: 1
  },
  textContainerStyle: {
+   backgroundColor: 'rgba(0,0,0,0)',
    height: height / 5,
-   width,
-   backgroundColor: 'rgba(0,0,0,0)'
+   width
 }
 };
 
