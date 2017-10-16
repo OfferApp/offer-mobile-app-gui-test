@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Image, Dimensions } from 'react-native';
-import { Container,
+import {
+  Container,
   CardItem,
   Content,
   Header,
+  Drawer,
   Button,
   Right,
   Title,
@@ -14,14 +16,21 @@ import { Container,
   Text,
   Card
 } from 'native-base';
- import accessories from './img/accessories.jpg';
- import Electronics1 from './img/Electronics1.jpg';
- import clothes from './img/clothes.jpg';
- import hotels from './img/hotels.jpg';
- import foods from './img/foods.jpg';
- import shoe from './img/shoe.jpg';
+import SideBar from './SideBar';
+import accessories from './img/accessories.jpg';
+import electronics from './img/electronics.jpg';
+import clothes from './img/clothes.jpg';
+import hotels from './img/hotels.jpg';
+import foods from './img/foods.jpg';
+import shoe from './img/shoe.jpg';
 
-class Offers extends Component {
+class CategoryScreen extends Component {
+  closeDrawer = () => {
+    this.drawer._root.close();
+  }
+  openDrawer = () => {
+    this.drawer._root.open();
+  }
   render() {
     const {
       textContainerStyle,
@@ -34,21 +43,25 @@ class Offers extends Component {
       cardStyle,
       titleStyle
       } = styles;
-
     return (
+      <Drawer
+        ref={(ref) => { this.drawer = ref; }}
+        content={<SideBar />}
+        onClose={() => { this.closeDrawer(); }}
+      >
       <Container style={containerStyle}>
-        <Header style={headerStyle}>
-          <Left>
-            <Button transparent>
-              <Icon name='menu' />
+        <Header style={headerStyle} iosBarStyle='light-content'>
+          <Left style={{ marginRight: -(width / 4) }}>
+            <Button transparent onPress={this.openDrawer.bind(this)}>
+              <Icon style={{ color: 'white' }} name='menu' />
             </Button>
           </Left>
           <Body>
-            <Title style={titleStyle}>CATEGORY</Title>
+            <Title style={titleStyle}>CATEGORIES</Title>
           </Body>
-          <Right />
+          <Right style={{ marginLeft: -(width / 4) }} />
         </Header>
-        <Content>
+        <Content style={{ paddingTop: 5 }}>
           <View style={{ flex: 1 }} >
             <View style={viewStyle} >
               <Card style={cardStyle}>
@@ -124,7 +137,7 @@ class Offers extends Component {
               <Card style={cardStyle}>
               <CardItem style={cardItemStyle} cardBody>
                 <Image
-                  source={Electronics1}
+                  source={electronics}
                   style={backgroundImage}
                 >
                 <View style={textContainerStyle}>
@@ -137,6 +150,7 @@ class Offers extends Component {
           </View>
         </Content>
       </Container>
+      </Drawer>
     );
   }
 }
@@ -152,7 +166,6 @@ const styles = {
  },
  cardStyle: {
    flex: 1,
-   borderColor: 'black'
  },
  textStyle: {
    alignSelf: 'center',
@@ -163,23 +176,23 @@ const styles = {
    color: 'white'
  },
  headerStyle: {
-   backgroundColor: 'black',
-   borderBottomColor: 'black'
+   paddingTop: 0,
+   backgroundColor: '#f93450',
+   borderBottomColor: '#f93450'
  },
  titleStyle: {
    fontWeight: 'bold',
-   backgroundColor: 'black',
    color: 'white',
    textAlign: 'center',
    fontSize: 18,
  },
  containerStyle: {
-   backgroundColor: 'black',
+   backgroundColor: 'white',
    marginTop: 20
  },
  viewStyle: {
-   marginTop: -4,
-   marginBottom: -4,
+   marginLeft: 4,
+   marginRight: 4,
    flex: 1
  },
  textContainerStyle: {
@@ -189,4 +202,4 @@ const styles = {
 }
 };
 
-export default Offers;
+export default CategoryScreen;
