@@ -1,7 +1,8 @@
 import React from 'react';
-//import { Dimensions } from 'react-native';
+//import { Image } from 'react-native';
 import {
   Container,
+  Thumbnail,
   CardItem,
   Content,
   Header,
@@ -24,28 +25,38 @@ class SideBar extends React.Component {
       viewStyle,
       cardStyle,
       } = styles;
-
     return (
       <Container style={containerStyle}>
       <Header searchBar rounded style={headerStyle}>
         <Item style={{ backgroundColor: '#2f323b' }}>
-          <Icon style={iconStyle} name="ios-search" />
+          <Icon
+            style={iconStyle}
+            ios='ios-search'
+            android='search'
+          />
           <Input style={{ color: 'white' }} autoCorrect={false} />
         </Item>
       </Header>
         <Content>
         <View style={viewStyle} >
           <Card style={cardStyle}>
-            <CardItem style={cardItemStyle}>
-              <Icon style={iconStyle} name="ios-person" />
-              <Text style={textStyle}>Profile</Text>
+            <CardItem style={{ ...cardItemStyle, paddingLeft: 10 }}>
+              <Thumbnail
+                small
+                source={{ uri: 'http://s3.amazonaws.com/cdn.roosterteeth.com/default/md/user_profile_male.jpg' }}
+              />
+              <Text style={{ ...textStyle, paddingLeft: 15 }}>Tejas Rathod</Text>
             </CardItem>
           </Card>
           </View>
           <View style={viewStyle} >
           <Card style={cardStyle}>
             <CardItem style={cardItemStyle}>
-              <Icon style={iconStyle} name="ios-image" />
+              <Icon
+                style={iconStyle}
+                ios='ios-image'
+                android='image'
+              />
               <Text style={textStyle}>Categories</Text>
             </CardItem>
           </Card>
@@ -53,7 +64,23 @@ class SideBar extends React.Component {
           <View style={viewStyle} >
           <Card style={cardStyle}>
             <CardItem style={cardItemStyle}>
-              <Icon style={iconStyle} name="ios-log-out" />
+              <Icon
+                style={iconStyle}
+                ios='ios-bookmark'
+                android='bookmark'
+              />
+              <Text style={textStyle}>Bookmark</Text>
+            </CardItem>
+          </Card>
+          </View>
+          <View style={viewStyle} >
+          <Card style={cardStyle}>
+            <CardItem style={cardItemStyle}>
+              <Icon
+                style={iconStyle}
+                ios='ios-log-out'
+                android='log-out'
+              />
               <Text style={textStyle}>Sign Out</Text>
             </CardItem>
           </Card>
@@ -67,12 +94,14 @@ class SideBar extends React.Component {
 const styles = {
  cardItemStyle: {
     flex: 1,
+    paddingTop: 15,
+    paddingBottom: 15,
     backgroundColor: '#343843',
  },
  cardStyle: {
    flex: 1,
    backgroundColor: '#343843',
-   borderColor: '#343843'
+   borderColor: '#343843',
  },
  iconStyle: {
    color: 'white'
@@ -85,7 +114,8 @@ const styles = {
  headerStyle: {
    paddingTop: 0,
    backgroundColor: '#343843',
-   borderBottomColor: '#343843'
+   borderBottomColor: '#343843',
+   marginRight: 10
  },
  containerStyle: {
    backgroundColor: '#343843',

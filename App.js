@@ -1,7 +1,7 @@
 import React from 'react';
 import Expo, { AppLoading } from 'expo';
 import { View } from 'react-native';
-import CategoryScreen from './src/CategoryScreen';
+import OfferScreen from './src/OfferScreen';
 
  export default class App extends React.Component {
    constructor() {
@@ -24,7 +24,7 @@ import CategoryScreen from './src/CategoryScreen';
        if (this.state.isReady) {
        return (
          <View style={{ flex: 1 }}>
-          <CategoryScreen />
+          <OfferScreen />
          </View>
        );
      }
