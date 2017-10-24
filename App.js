@@ -1,7 +1,10 @@
 import React from 'react';
 import Expo, { AppLoading } from 'expo';
 import { View } from 'react-native';
-import OfferScreen from './src/OfferScreen';
+import Roboto from 'native-base/Fonts/Roboto.ttf';
+import RobotoMedium from 'native-base/Fonts/Roboto_medium.ttf';
+import Ionicons from '@expo/vector-icons/fonts/Ionicons.ttf';
+import OfferDetailScreen from './src/OfferDetailScreen';
 
  export default class App extends React.Component {
    constructor() {
@@ -13,9 +16,9 @@ import OfferScreen from './src/OfferScreen';
 
    async componentWillMount() {
      await Expo.Font.loadAsync({
-       Roboto: require('native-base/Fonts/Roboto.ttf'),
-       Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
-       Ionicons: require('@expo/vector-icons/fonts/Ionicons.ttf')
+       Roboto,
+       Roboto_medium: RobotoMedium,
+       Ionicons,
      });
 
      this.setState({ isReady: true });
@@ -24,7 +27,7 @@ import OfferScreen from './src/OfferScreen';
        if (this.state.isReady) {
        return (
          <View style={{ flex: 1 }}>
-          <OfferScreen />
+          <OfferDetailScreen />
          </View>
        );
      }
